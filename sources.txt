@@ -2,3 +2,4 @@ https://scratch.mit.edu/projects/3275800/#editor
 http://stackoverflow.com/questions/7310156/how-would-i-play-a-wav-file-with-a-mathematica-program
 http://mathematica.stackexchange.com/questions/29494/how-can-i-rewrite-my-game-without-using-manipulate
 https://github.com/lrns/pacman3d/tree/master/pacman
+http://gameinternals.com/post/2072558330/understanding-pac-man-ghost-behavior
