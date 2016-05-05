@@ -10,10 +10,10 @@
 NotebookFileLineBreakTest
 NotebookFileLineBreakTest
 NotebookDataPosition[       158,          7]
-NotebookDataLength[    100465,       2085]
-NotebookOptionsPosition[     99005,       2030]
-NotebookOutlinePosition[     99348,       2045]
-CellTagsIndexPosition[     99305,       2042]
+NotebookDataLength[    103111,       2143]
+NotebookOptionsPosition[    101565,       2085]
+NotebookOutlinePosition[    101909,       2100]
+CellTagsIndexPosition[    101866,       2097]
 WindowFrame->Normal*)
 
 (* Beginning of Notebook Content *)
@@ -144,6 +144,161 @@ Cell[BoxData[
 
 Cell[CellGroupData[{
 
+Cell["collisions", "Subsubsection",
+ CellChangeTimes->{{3.671139624303959*^9, 3.6711396254889584`*^9}}],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{
+   RowBox[{"collisions", "[", "]"}], ":=", 
+   RowBox[{"Module", "[", 
+    RowBox[{
+     RowBox[{"{", 
+      RowBox[{"i", "=", "1"}], "}"}], ",", "\[IndentingNewLine]", 
+     RowBox[{
+      RowBox[{"For", "[", 
+       RowBox[{"i", ",", 
+        RowBox[{"i", "\[LessEqual]", "4"}], ",", 
+        RowBox[{"i", "++"}], ",", "\[IndentingNewLine]", 
+        RowBox[{
+         RowBox[{"If", "[", 
+          RowBox[{
+           RowBox[{
+            RowBox[{
+            "ghosts", "\[LeftDoubleBracket]", "i", "\[RightDoubleBracket]"}], 
+            "\[Equal]", "pacman"}], ",", 
+           RowBox[{"(*", 
+            RowBox[{
+            "Uses", " ", "ghost", " ", "pacman", " ", "has", " ", "collided", 
+             " ", "with"}], "*)"}], "\[IndentingNewLine]", 
+           RowBox[{
+            RowBox[{"If", "[", 
+             RowBox[{
+              RowBox[{
+               RowBox[{
+               "isFrightened", "\[LeftDoubleBracket]", "i", 
+                "\[RightDoubleBracket]"}], "\[Equal]", "True"}], ",", 
+              RowBox[{"(*", 
+               RowBox[{
+               "If", " ", "frightened", " ", "mode", " ", "is", " ", "active",
+                 " ", "then", " ", "the", " ", "ghost", " ", "is", " ", 
+                "returned", " ", "to", " ", "the", " ", "center"}], "*)"}], 
+              "\[IndentingNewLine]", 
+              RowBox[{
+               RowBox[{
+                RowBox[{
+                "ghosts", "\[LeftDoubleBracket]", "i", 
+                 "\[RightDoubleBracket]"}], "=", 
+                RowBox[{"{", 
+                 RowBox[{"104", ",", "152"}], "}"}]}], ";", 
+               "\[IndentingNewLine]", 
+               RowBox[{"killCounter", "++"}], ";", "\[IndentingNewLine]", 
+               RowBox[{"Which", "[", 
+                RowBox[{
+                 RowBox[{"killCounter", "\[Equal]", "1"}], ",", 
+                 RowBox[{"score", "+=", "200"}], ",", 
+                 RowBox[{"killCounter", "\[Equal]", "2"}], ",", 
+                 RowBox[{"score", "+=", "400"}], ",", 
+                 RowBox[{"killCounter", "\[Equal]", "3"}], ",", 
+                 RowBox[{"score", "+=", "800"}], ",", 
+                 RowBox[{"killCounter", "\[Equal]", "4"}], ",", 
+                 RowBox[{"score", "+=", "1600"}]}], "]"}], ";"}]}], 
+             "\[IndentingNewLine]", "]"}], ";", "\[IndentingNewLine]", 
+            RowBox[{"If", "[", 
+             RowBox[{
+              RowBox[{
+               RowBox[{
+               "isFrightened", "\[LeftDoubleBracket]", "i", 
+                "\[RightDoubleBracket]"}], "\[Equal]", "False"}], ",", 
+              RowBox[{"(*", 
+               RowBox[{
+               "If", " ", "frightened", " ", "mode", " ", "is", " ", "not", 
+                " ", "active", " ", "pacman", " ", "is", " ", "returned", " ",
+                 "to", " ", "spawn"}], "*)"}], "\[IndentingNewLine]", 
+              RowBox[{
+               RowBox[{"pacman", "=", "spawn"}], ";", 
+               RowBox[{"ghosts", "=", "ghostSpawns"}], ";", 
+               RowBox[{"counter", "=", 
+                RowBox[{"-", "1"}]}], ";", 
+               RowBox[{"deathCounter", "--"}], ";", "\[IndentingNewLine]", 
+               RowBox[{"EmitSound", "@", 
+                RowBox[{"Import", "[", 
+                 RowBox[{
+                 "\"\<Pacman-death-sound.mp3\>\"", ",", "\"\<MP3\>\""}], 
+                 "]"}]}], ";", "\[IndentingNewLine]", 
+               RowBox[{"If", "[", 
+                RowBox[{
+                 RowBox[{"deathCounter", "<", "1"}], ",", 
+                 "\[IndentingNewLine]", 
+                 RowBox[{
+                  RowBox[{"score", "=", "0"}], ";", "\[IndentingNewLine]", 
+                  RowBox[{"NotebookClose", "[", "]"}], ";", 
+                  "\[IndentingNewLine]", 
+                  RowBox[{"StopScheduledTask", "[", "update", "]"}], ";"}]}], 
+                "\[IndentingNewLine]", "]"}]}]}], "\[IndentingNewLine]", 
+             "]"}], ";"}]}], "\[IndentingNewLine]", "]"}], ";"}]}], 
+       "\[IndentingNewLine]", "]"}], ";"}]}], "\[IndentingNewLine]", "]"}]}], 
+  ";"}]], "Input",
+ CellChangeTimes->{3.6711407970039587`*^9}]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["ifOnPath", "Subsubsection",
+ CellChangeTimes->{{3.6711426569920855`*^9, 3.6711426587912617`*^9}}],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"ifOnPath", "[", 
+   RowBox[{"pos_", ",", "obj_"}], "]"}], ":=", 
+  RowBox[{
+   RowBox[{"MemberQ", "[", 
+    RowBox[{"path", ",", 
+     RowBox[{"round", "[", "pos", "]"}]}], "]"}], "&&", 
+   RowBox[{"MemberQ", "[", 
+    RowBox[{"path", ",", 
+     RowBox[{"round", "[", 
+      RowBox[{"pos", "+", 
+       RowBox[{"{", 
+        RowBox[{"7", ",", "7"}], "}"}]}], "]"}]}], "]"}], "&&", 
+   "\[IndentingNewLine]", 
+   RowBox[{"(", 
+    RowBox[{
+     RowBox[{
+      RowBox[{"obj", "\[LeftDoubleBracket]", "1", "\[RightDoubleBracket]"}], "==", 
+      RowBox[{
+       RowBox[{"round", "[", "pos", "]"}], "\[LeftDoubleBracket]", "1", 
+       "\[RightDoubleBracket]"}]}], "||", 
+     RowBox[{
+      RowBox[{"obj", "\[LeftDoubleBracket]", "2", "\[RightDoubleBracket]"}], "==", 
+      RowBox[{
+       RowBox[{"round", "[", "pos", "]"}], "\[LeftDoubleBracket]", "2", 
+       "\[RightDoubleBracket]"}]}]}], ")"}], "&&", "\[IndentingNewLine]", 
+   RowBox[{"(", 
+    RowBox[{
+     RowBox[{
+      RowBox[{"obj", "\[LeftDoubleBracket]", "1", "\[RightDoubleBracket]"}], "==", 
+      RowBox[{
+       RowBox[{"round", "[", 
+        RowBox[{"pos", "+", 
+         RowBox[{"{", 
+          RowBox[{"7", ",", "7"}], "}"}]}], "]"}], "\[LeftDoubleBracket]", 
+       "1", "\[RightDoubleBracket]"}]}], "||", 
+     RowBox[{
+      RowBox[{"obj", "\[LeftDoubleBracket]", "2", "\[RightDoubleBracket]"}], "==", 
+      RowBox[{
+       RowBox[{"round", "[", 
+        RowBox[{"pos", "+", 
+         RowBox[{"{", 
+          RowBox[{"7", ",", "7"}], "}"}]}], "]"}], "\[LeftDoubleBracket]", 
+       "2", "\[RightDoubleBracket]"}]}]}], ")"}]}]}]], "Input",
+ CellChangeTimes->{{3.671141952833491*^9, 3.6711420457153606`*^9}, {
+   3.6711421877987466`*^9, 3.671142189403904*^9}, 3.6711422324126463`*^9, 
+   3.671142417703725*^9, {3.671471411894842*^9, 3.6714714754658184`*^9}}]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
 Cell["update", "Subsubsection",
  CellChangeTimes->{{3.6707141451944103`*^9, 3.6707141478645167`*^9}}],
 
@@ -217,99 +372,6 @@ Cell[BoxData[
            RowBox[{"round", "@", "ghosts"}], ",", 
            RowBox[{"round", "@", "pacman"}]}], "]"}], ",", 
          RowBox[{"collisions", "[", "]"}]}], "]"}], ";", 
-       "\[IndentingNewLine]", "\[IndentingNewLine]", 
-       RowBox[{
-        RowBox[{"collisions", "[", "]"}], ":=", 
-        RowBox[{"Module", "[", 
-         RowBox[{
-          RowBox[{"{", 
-           RowBox[{"i", "=", "1"}], "}"}], ",", "\[IndentingNewLine]", 
-          RowBox[{
-           RowBox[{"For", "[", 
-            RowBox[{"i", ",", 
-             RowBox[{"i", "\[LessEqual]", "4"}], ",", 
-             RowBox[{"i", "++"}], ",", "\[IndentingNewLine]", 
-             RowBox[{
-              RowBox[{"If", "[", 
-               RowBox[{
-                RowBox[{
-                 RowBox[{
-                 "ghosts", "\[LeftDoubleBracket]", "i", 
-                  "\[RightDoubleBracket]"}], "\[Equal]", "pacman"}], ",", 
-                RowBox[{"(*", 
-                 RowBox[{
-                 "Uses", " ", "ghost", " ", "pacman", " ", "has", " ", 
-                  "collided", " ", "with"}], "*)"}], "\[IndentingNewLine]", 
-                RowBox[{
-                 RowBox[{"If", "[", 
-                  RowBox[{
-                   RowBox[{
-                    RowBox[{
-                    "isFrightened", "\[LeftDoubleBracket]", "i", 
-                    "\[RightDoubleBracket]"}], "\[Equal]", "True"}], ",", 
-                   RowBox[{"(*", 
-                    RowBox[{
-                    "If", " ", "frightened", " ", "mode", " ", "is", " ", 
-                    "active", " ", "then", " ", "the", " ", "ghost", " ", 
-                    "is", " ", "returned", " ", "to", " ", "the", " ", 
-                    "center"}], "*)"}], "\[IndentingNewLine]", 
-                   RowBox[{
-                    RowBox[{
-                    RowBox[{
-                    "ghosts", "\[LeftDoubleBracket]", "i", 
-                    "\[RightDoubleBracket]"}], "=", 
-                    RowBox[{"{", 
-                    RowBox[{"104", ",", "152"}], "}"}]}], ";", 
-                    "\[IndentingNewLine]", 
-                    RowBox[{"killCounter", "++"}], ";", "\[IndentingNewLine]", 
-                    RowBox[{"Which", "[", 
-                    RowBox[{
-                    RowBox[{"killCounter", "\[Equal]", "1"}], ",", 
-                    RowBox[{"score", "+=", "200"}], ",", 
-                    RowBox[{"killCounter", "\[Equal]", "2"}], ",", 
-                    RowBox[{"score", "+=", "400"}], ",", 
-                    RowBox[{"killCounter", "\[Equal]", "3"}], ",", 
-                    RowBox[{"score", "+=", "800"}], ",", 
-                    RowBox[{"killCounter", "\[Equal]", "4"}], ",", 
-                    RowBox[{"score", "+=", "1600"}]}], "]"}], ";"}]}], 
-                  "\[IndentingNewLine]", "]"}], ";", "\[IndentingNewLine]", 
-                 RowBox[{"If", "[", 
-                  RowBox[{
-                   RowBox[{
-                    RowBox[{
-                    "isFrightened", "\[LeftDoubleBracket]", "i", 
-                    "\[RightDoubleBracket]"}], "\[Equal]", "False"}], ",", 
-                   RowBox[{"(*", 
-                    RowBox[{
-                    "If", " ", "frightened", " ", "mode", " ", "is", " ", 
-                    "not", " ", "active", " ", "pacman", " ", "is", " ", 
-                    "returned", " ", "to", " ", "spawn"}], "*)"}], 
-                   "\[IndentingNewLine]", 
-                   RowBox[{
-                    RowBox[{"pacman", "=", "spawn"}], ";", 
-                    RowBox[{"ghosts", "=", "ghostSpawns"}], ";", 
-                    RowBox[{"counter", "=", 
-                    RowBox[{"-", "1"}]}], ";", 
-                    RowBox[{"deathCounter", "--"}], ";", 
-                    "\[IndentingNewLine]", 
-                    RowBox[{"EmitSound", "@", 
-                    RowBox[{"Import", "[", 
-                    RowBox[{
-                    "\"\<Pacman-death-sound.mp3\>\"", ",", "\"\<MP3\>\""}], 
-                    "]"}]}], ";", "\[IndentingNewLine]", 
-                    RowBox[{"If", "[", 
-                    RowBox[{
-                    RowBox[{"deathCounter", "<", "1"}], ",", 
-                    "\[IndentingNewLine]", 
-                    RowBox[{
-                    RowBox[{"score", "=", "0"}], ";", "\[IndentingNewLine]", 
-                    RowBox[{"NotebookClose", "[", "]"}], ";", 
-                    "\[IndentingNewLine]", 
-                    RowBox[{"StopScheduledTask", "[", "update", "]"}], 
-                    ";"}]}], "\[IndentingNewLine]", "]"}]}]}], 
-                  "\[IndentingNewLine]", "]"}], ";"}]}], 
-               "\[IndentingNewLine]", "]"}], ";"}]}], "\[IndentingNewLine]", 
-            "]"}], ";"}]}], "\[IndentingNewLine]", "]"}]}], ";", 
        "\[IndentingNewLine]", "\[IndentingNewLine]", 
        RowBox[{"(*", 
         RowBox[{"pacman", " ", "interactions", " ", "with", " ", "tiles"}], 
@@ -396,17 +458,10 @@ Cell[BoxData[
           RowBox[{"nextDir", "\[NotEqual]", 
            RowBox[{"{", 
             RowBox[{"0", ",", "0"}], "}"}]}], "&&", 
-          RowBox[{"MemberQ", "[", 
-           RowBox[{"path", ",", 
-            RowBox[{"round", "[", 
-             RowBox[{"pacman", "+", "nextDir"}], "]"}]}], "]"}], "&&", 
-          RowBox[{"MemberQ", "[", 
-           RowBox[{"path", ",", 
-            RowBox[{"round", "[", 
-             RowBox[{"pacman", "+", "nextDir", "+", 
-              RowBox[{"{", 
-               RowBox[{"7", ",", "7"}], "}"}]}], "]"}]}], "]"}]}], ",", 
-         "\[IndentingNewLine]", 
+          RowBox[{"ifOnPath", "[", 
+           RowBox[{
+            RowBox[{"pacman", "+", "nextDir"}], ",", "pacman"}], "]"}]}], ",",
+          "\[IndentingNewLine]", 
          RowBox[{
           RowBox[{"pacman", "+=", "nextDir"}], ";", 
           RowBox[{"dir", "=", "nextDir"}], ";", 
@@ -414,17 +469,9 @@ Cell[BoxData[
            RowBox[{"{", 
             RowBox[{"0", ",", "0"}], "}"}]}]}], " ", ",", 
          "\[IndentingNewLine]", 
-         RowBox[{
-          RowBox[{"MemberQ", "[", 
-           RowBox[{"path", ",", 
-            RowBox[{"round", "[", 
-             RowBox[{"pacman", "+", "dir"}], "]"}]}], "]"}], "&&", 
-          RowBox[{"MemberQ", "[", 
-           RowBox[{"path", ",", 
-            RowBox[{"round", "[", 
-             RowBox[{"pacman", "+", "dir", "+", 
-              RowBox[{"{", 
-               RowBox[{"7", ",", "7"}], "}"}]}], "]"}]}], "]"}]}], ",", 
+         RowBox[{"ifOnPath", "[", 
+          RowBox[{
+           RowBox[{"pacman", "+", "dir"}], ",", "pacman"}], "]"}], ",", 
          "\[IndentingNewLine]", 
          RowBox[{"pacman", "+=", "dir"}]}], "\[IndentingNewLine]", "]"}], ";",
         "\[IndentingNewLine]", "\[IndentingNewLine]", 
@@ -511,31 +558,35 @@ Cell[BoxData[
              RowBox[{
              "isFrightened", "\[LeftDoubleBracket]", "i", 
               "\[RightDoubleBracket]"}]}], ",", "\[IndentingNewLine]", 
-            RowBox[{"(*", 
-             RowBox[{
-             "return", " ", "a", " ", "random", " ", "direction", " ", "that",
-               " ", "is", " ", "on", " ", "the", " ", "path"}], "*)"}], 
-            "\[IndentingNewLine]", 
-            RowBox[{
-             RowBox[{
-             "ghosts", "\[LeftDoubleBracket]", "i", "\[RightDoubleBracket]"}],
-              "+", 
-             RowBox[{"(", 
+            RowBox[{"\"\<frightened\>\"", ";", "\[IndentingNewLine]", 
+             RowBox[{"(*", 
               RowBox[{
+              "return", " ", "a", " ", "random", " ", "direction", " ", 
+               "that", " ", "is", " ", "on", " ", "the", " ", "path"}], 
+              "*)"}], "\[IndentingNewLine]", 
+             RowBox[{
+              RowBox[{
+              "ghosts", "\[LeftDoubleBracket]", "i", 
+               "\[RightDoubleBracket]"}], "+", 
+              RowBox[{"(", 
                RowBox[{
-               "ghostsDir", "\[LeftDoubleBracket]", "i", 
-                "\[RightDoubleBracket]"}], "=", 
-               RowBox[{"RandomChoice", "[", 
-                RowBox[{"Select", "[", 
-                 RowBox[{"directions", ",", 
-                  RowBox[{
-                   RowBox[{"MemberQ", "[", 
-                    RowBox[{"path", ",", 
+                RowBox[{
+                "ghostsDir", "\[LeftDoubleBracket]", "i", 
+                 "\[RightDoubleBracket]"}], "=", 
+                RowBox[{"RandomChoice", "[", 
+                 RowBox[{"Select", "[", 
+                  RowBox[{"directions", ",", 
+                   RowBox[{
+                    RowBox[{"ifOnPath", "[", 
+                    RowBox[{
                     RowBox[{
                     RowBox[{
                     "ghosts", "\[LeftDoubleBracket]", "i", 
-                    "\[RightDoubleBracket]"}], "+", "#"}]}], "]"}], "&"}]}], 
-                 "]"}], "]"}]}], ")"}]}], ",", "\[IndentingNewLine]", 
+                    "\[RightDoubleBracket]"}], "+", "#"}], ",", 
+                    RowBox[{
+                    "ghosts", "\[LeftDoubleBracket]", "i", 
+                    "\[RightDoubleBracket]"}]}], "]"}], "&"}]}], "]"}], 
+                 "]"}]}], ")"}]}]}], ",", "\[IndentingNewLine]", 
             "\[IndentingNewLine]", 
             RowBox[{"(*", 
              RowBox[{
@@ -548,35 +599,51 @@ Cell[BoxData[
               RowBox[{
               "ghosts", "\[LeftDoubleBracket]", "i", 
                "\[RightDoubleBracket]"}]}], "]"}], ",", "\[IndentingNewLine]", 
-            RowBox[{"(*", 
-             RowBox[{"if", " ", "not", " ", "frightened", " ", 
-              RowBox[{"i", ".", "e", ".", " ", "in"}], " ", "chase"}], "*)"}],
-             "\[IndentingNewLine]", 
-            RowBox[{"(*", 
+            RowBox[{"\"\<intersec\>\"", ";", "\[IndentingNewLine]", 
              RowBox[{
-             "select", " ", "the", " ", "points", " ", "that", " ", "are", 
-              " ", "on", " ", "the", " ", "path", " ", "from", " ", "the", 
-              " ", "directions"}], "*)"}], "\[IndentingNewLine]", 
-            RowBox[{
-             RowBox[{
-             "ghosts", "\[LeftDoubleBracket]", "i", "\[RightDoubleBracket]"}],
-              "+", 
-             RowBox[{"(", 
-              RowBox[{
+              RowBox[{"Print", "@", "\"\<hi\>\""}], "<>", 
+              RowBox[{"Select", "[", 
                RowBox[{
-               "ghostsDir", "\[LeftDoubleBracket]", "i", 
-                "\[RightDoubleBracket]"}], "=", 
-               RowBox[{
-                RowBox[{"First", "@", 
-                 RowBox[{"Sort", "[", "\[IndentingNewLine]", 
-                  RowBox[{"(*", 
+                RowBox[{
+                 RowBox[{
+                  RowBox[{
                    RowBox[{
-                   "get", " ", "the", " ", "points", " ", "out", " ", "of", 
+                   "ghosts", "\[LeftDoubleBracket]", "i", 
+                    "\[RightDoubleBracket]"}], "+", "#"}], "&"}], "/@", 
+                 "directions"}], ",", 
+                RowBox[{
+                 RowBox[{"MemberQ", "[", 
+                  RowBox[{"path", ",", "#"}], "]"}], "&"}]}], "]"}]}], ";", 
+             "\[IndentingNewLine]", 
+             RowBox[{"(*", 
+              RowBox[{"if", " ", "not", " ", "frightened", " ", 
+               RowBox[{"i", ".", "e", ".", " ", "in"}], " ", "chase"}], 
+              "*)"}], "\[IndentingNewLine]", 
+             RowBox[{"(*", 
+              RowBox[{
+              "select", " ", "the", " ", "points", " ", "that", " ", "are", 
+               " ", "on", " ", "the", " ", "path", " ", "from", " ", "the", 
+               " ", "directions"}], "*)"}], "\[IndentingNewLine]", 
+             RowBox[{
+              RowBox[{
+              "ghosts", "\[LeftDoubleBracket]", "i", 
+               "\[RightDoubleBracket]"}], "+", 
+              RowBox[{"(", 
+               RowBox[{
+                RowBox[{
+                "ghostsDir", "\[LeftDoubleBracket]", "i", 
+                 "\[RightDoubleBracket]"}], "=", 
+                RowBox[{
+                 RowBox[{"First", "@", 
+                  RowBox[{"Sort", "[", "\[IndentingNewLine]", 
+                   RowBox[{"(*", 
+                    RowBox[{
+                    "get", " ", "the", " ", "points", " ", "out", " ", "of", 
                     " ", "the", " ", "four", " ", "directions", " ", "that", 
                     " ", "are", " ", "on", " ", "the", " ", "path"}], "*)"}], 
-                  "\[IndentingNewLine]", 
-                  RowBox[{
-                   RowBox[{"Select", "[", 
+                   "\[IndentingNewLine]", 
+                   RowBox[{
+                    RowBox[{"Select", "[", 
                     RowBox[{
                     RowBox[{
                     RowBox[{
@@ -587,15 +654,15 @@ Cell[BoxData[
                     "directions"}], ",", 
                     RowBox[{
                     RowBox[{"MemberQ", "[", 
-                    RowBox[{"path", ",", "#s"}], "]"}], "&"}]}], "]"}], ",", 
-                   "\[IndentingNewLine]", 
-                   RowBox[{"(*", 
+                    RowBox[{"path", ",", "#"}], "]"}], "&"}]}], "]"}], ",", 
+                    "\[IndentingNewLine]", 
+                    RowBox[{"(*", 
                     RowBox[{
                     "sort", " ", "by", " ", "the", " ", "distance", " ", 
                     "between", " ", "that", " ", "point", " ", "and", " ", 
                     "the", " ", "target", " ", "tile"}], "*)"}], 
-                   "\[IndentingNewLine]", 
-                   RowBox[{
+                    "\[IndentingNewLine]", 
+                    RowBox[{
                     RowBox[{
                     RowBox[{"EuclideanDistance", "[", 
                     RowBox[{
@@ -605,33 +672,35 @@ Cell[BoxData[
                     RowBox[{
                     RowBox[{"getTargetTile", "[", "i", "]"}], ",", "#2"}], 
                     "]"}]}], "&"}]}], "]"}]}], "\[IndentingNewLine]", "-", 
-                RowBox[{
-                "ghosts", "\[LeftDoubleBracket]", "i", 
-                 "\[RightDoubleBracket]"}]}]}], ")"}]}], ",", 
+                 RowBox[{
+                 "ghosts", "\[LeftDoubleBracket]", "i", 
+                  "\[RightDoubleBracket]"}]}]}], ")"}]}]}], ",", 
             "\[IndentingNewLine]", "\[IndentingNewLine]", 
             RowBox[{"(*", 
              RowBox[{
              "ghost", " ", "will", " ", "be", " ", "on", " ", "the", " ", 
               "path", " ", "after", " ", "the", " ", "next", " ", "move"}], 
              "*)"}], "\[IndentingNewLine]", 
-            RowBox[{"MemberQ", "[", 
-             RowBox[{"path", ",", 
-              RowBox[{"round", "[", 
+            RowBox[{"ifOnPath", "[", 
+             RowBox[{
+              RowBox[{
                RowBox[{
-                RowBox[{
-                "ghosts", "\[LeftDoubleBracket]", "i", 
-                 "\[RightDoubleBracket]"}], "+", 
-                RowBox[{
-                "ghostsDir", "\[LeftDoubleBracket]", "i", 
-                 "\[RightDoubleBracket]"}]}], "]"}]}], "]"}], ",", 
-            "\[IndentingNewLine]", 
-            RowBox[{
+               "ghosts", "\[LeftDoubleBracket]", "i", 
+                "\[RightDoubleBracket]"}], "+", 
+               RowBox[{
+               "ghostsDir", "\[LeftDoubleBracket]", "i", 
+                "\[RightDoubleBracket]"}]}], ",", 
+              RowBox[{
+              "ghosts", "\[LeftDoubleBracket]", "i", 
+               "\[RightDoubleBracket]"}]}], "]"}], ",", "\[IndentingNewLine]", 
+            RowBox[{"\"\<dir\>\"", ";", "\[IndentingNewLine]", 
              RowBox[{
-             "ghosts", "\[LeftDoubleBracket]", "i", "\[RightDoubleBracket]"}],
-              "+", 
-             RowBox[{
-             "ghostsDir", "\[LeftDoubleBracket]", "i", 
-              "\[RightDoubleBracket]"}]}], ",", "\[IndentingNewLine]", 
+              RowBox[{
+              "ghosts", "\[LeftDoubleBracket]", "i", 
+               "\[RightDoubleBracket]"}], "+", 
+              RowBox[{
+              "ghostsDir", "\[LeftDoubleBracket]", "i", 
+               "\[RightDoubleBracket]"}]}]}], ",", "\[IndentingNewLine]", 
             "\[IndentingNewLine]", 
             RowBox[{"(*", 
              RowBox[{
@@ -642,41 +711,47 @@ Cell[BoxData[
               "turn", " ", "onto", " ", "the", " ", "available", " ", 
                "corridor"}]}], "*)"}], "\[IndentingNewLine]", "True", ",", 
             "\[IndentingNewLine]", 
-            RowBox[{
+            RowBox[{"\"\<turn\>\"", ";", "\[IndentingNewLine]", 
              RowBox[{
-             "ghosts", "\[LeftDoubleBracket]", "i", "\[RightDoubleBracket]"}],
-              "+", 
-             RowBox[{"If", "[", 
               RowBox[{
-               RowBox[{"MemberQ", "[", 
-                RowBox[{"path", ",", 
-                 RowBox[{"round", "[", 
+              "ghosts", "\[LeftDoubleBracket]", "i", 
+               "\[RightDoubleBracket]"}], "+", 
+              RowBox[{"If", "[", 
+               RowBox[{
+                RowBox[{"ifOnPath", "[", 
+                 RowBox[{
                   RowBox[{
                    RowBox[{
                    "ghosts", "\[LeftDoubleBracket]", "i", 
                     "\[RightDoubleBracket]"}], "+", 
-                   RowBox[{"Reverse", "[", 
+                   RowBox[{"Reverse", "@", 
                     RowBox[{
                     "ghostsDir", "\[LeftDoubleBracket]", "i", 
-                    "\[RightDoubleBracket]"}], "]"}]}], "]"}]}], "]"}], ",", 
-               RowBox[{
+                    "\[RightDoubleBracket]"}]}]}], ",", 
+                  RowBox[{
+                  "ghosts", "\[LeftDoubleBracket]", "i", 
+                   "\[RightDoubleBracket]"}]}], "]"}], ",", 
+                "\[IndentingNewLine]", 
                 RowBox[{
-                "ghostsDir", "\[LeftDoubleBracket]", "i", 
-                 "\[RightDoubleBracket]"}], "=", 
-                RowBox[{"Reverse", "[", 
                  RowBox[{
                  "ghostsDir", "\[LeftDoubleBracket]", "i", 
-                  "\[RightDoubleBracket]"}], "]"}]}], ",", 
-               RowBox[{
-                RowBox[{
-                "ghostsDir", "\[LeftDoubleBracket]", "i", 
-                 "\[RightDoubleBracket]"}], "=", 
-                RowBox[{"-", 
+                  "\[RightDoubleBracket]"}], "=", 
                  RowBox[{"Reverse", "[", 
                   RowBox[{
                   "ghostsDir", "\[LeftDoubleBracket]", "i", 
-                   "\[RightDoubleBracket]"}], "]"}]}]}]}], "]"}]}]}], 
-           "\[IndentingNewLine]", "]"}], "\[IndentingNewLine]", ",", 
+                   "\[RightDoubleBracket]"}], "]"}]}], ",", 
+                "\[IndentingNewLine]", 
+                RowBox[{
+                 RowBox[{
+                 "ghostsDir", "\[LeftDoubleBracket]", "i", 
+                  "\[RightDoubleBracket]"}], "=", 
+                 RowBox[{"-", 
+                  RowBox[{"Reverse", "[", 
+                   RowBox[{
+                   "ghostsDir", "\[LeftDoubleBracket]", "i", 
+                    "\[RightDoubleBracket]"}], "]"}]}]}]}], 
+               "\[IndentingNewLine]", "]"}]}]}]}], "\[IndentingNewLine]", 
+           "]"}], "\[IndentingNewLine]", ",", 
           RowBox[{"{", 
            RowBox[{"i", ",", 
             RowBox[{"Length", "@", "ghosts"}]}], "}"}]}], "]"}]}]}], 
@@ -732,7 +807,28 @@ Cell[BoxData[
    3.67113654485385*^9, 3.6711365694738503`*^9}, {3.67113690042985*^9, 
    3.67113691540235*^9}, {3.6711370675921893`*^9, 3.671137074021472*^9}, 
    3.6711389651969585`*^9, 3.671139130343959*^9, 3.6711392413949585`*^9, {
-   3.6711393473564587`*^9, 3.6711393643779583`*^9}}],
+   3.6711393473564587`*^9, 3.6711393643779583`*^9}, {3.6711396097714586`*^9, 
+   3.6711396108564587`*^9}, {3.6711398702109585`*^9, 
+   3.6711398728984585`*^9}, {3.6711408087409587`*^9, 
+   3.6711408735459585`*^9}, {3.671140943109459*^9, 3.671140979387459*^9}, {
+   3.671141374182639*^9, 3.6711413771578484`*^9}, {3.6711414226245346`*^9, 
+   3.6711414750887117`*^9}, {3.6711417056090508`*^9, 
+   3.6711417251981406`*^9}, {3.6711417797479143`*^9, 
+   3.6711417824504957`*^9}, {3.6711418295798984`*^9, 3.671141858550769*^9}, 
+   3.671141982309085*^9, {3.6711420565605803`*^9, 3.6711420948263516`*^9}, {
+   3.6711421389484377`*^9, 3.6711421530758176`*^9}, {3.67114220210415*^9, 
+   3.6711422818295317`*^9}, {3.6711423390170927`*^9, 3.671142340257217*^9}, {
+   3.671142420227969*^9, 3.6711424314705796`*^9}, {3.6711427546607327`*^9, 
+   3.671142785764284*^9}, {3.671469969597288*^9, 3.671469986138234*^9}, {
+   3.671470063839117*^9, 3.671470117207165*^9}, {3.67147027476044*^9, 
+   3.6714703125035195`*^9}, {3.671470381227075*^9, 3.671470435235405*^9}, {
+   3.671470709409917*^9, 3.6714707232751293`*^9}, {3.671470755738629*^9, 
+   3.671470769946347*^9}, {3.671470863386237*^9, 3.6714708743664055`*^9}, 
+   3.6714709582688637`*^9, {3.671471056621549*^9, 3.67147110095723*^9}, {
+   3.671471519113989*^9, 3.67147157975492*^9}, {3.6714721088688927`*^9, 
+   3.6714721424194083`*^9}, {3.6714723970333385`*^9, 
+   3.6714723998990016`*^9}, {3.671472464121669*^9, 3.671472466314293*^9}, {
+   3.671472712764287*^9, 3.6714727389087734`*^9}}],
 
 Cell[BoxData[
  RowBox[{
@@ -745,20 +841,9 @@ Cell[BoxData[
 ButtonFrame->None, ButtonData:>\\\"paclet:ref/CreateScheduledTask\\\", \
 ButtonNote -> \\\"CreateScheduledTask::timt\\\"]\\)\"\>"}]], "Message", "MSG",
  
- CellChangeTimes->{3.6711393745864587`*^9, 3.6711394270989585`*^9}],
-
-Cell[BoxData[
- RowBox[{
-  StyleBox[
-   RowBox[{"CreateScheduledTask", "::", "timt"}], "MessageName"], 
-  RowBox[{
-  ":", " "}], "\<\"Number of seconds \[NoBreak]\\!\\(1\\/perSecond\\)\
-\[NoBreak] is not a positive number. \
-\\!\\(\\*ButtonBox[\\\"\[RightSkeleton]\\\", ButtonStyle->\\\"Link\\\", \
-ButtonFrame->None, ButtonData:>\\\"paclet:ref/CreateScheduledTask\\\", \
-ButtonNote -> \\\"CreateScheduledTask::timt\\\"]\\)\"\>"}]], "Message", "MSG",
- 
- CellChangeTimes->{3.6711393745864587`*^9, 3.6711394271589584`*^9}]
+ CellChangeTimes->{3.671471105384798*^9, 3.671471591727604*^9, 
+  3.671472234398321*^9, 3.671472421533079*^9, 3.6714724773947926`*^9, 
+  3.671472629277695*^9, 3.6714727509368134`*^9, 3.6714728232712708`*^9}]
 }, Open  ]]
 }, Open  ]],
 
@@ -1424,7 +1509,11 @@ Cell[BoxData[
    3.670879297809258*^9}, {3.671138021784314*^9, 3.6711380525272727`*^9}, {
    3.6711381185891485`*^9, 3.6711381397527246`*^9}, {3.671138224072342*^9, 
    3.671138240077902*^9}, {3.6711388278619585`*^9, 3.6711388458819585`*^9}, 
-   3.6711391603824587`*^9}]
+   3.6711391603824587`*^9, {3.6711429755192842`*^9, 3.6711429877244787`*^9}, {
+   3.6711430245457764`*^9, 3.671143046148497*^9}, {3.671471037418754*^9, 
+   3.6714710469764013`*^9}, {3.671471603247282*^9, 3.6714716035617905`*^9}, {
+   3.671472408723506*^9, 3.6714724090420237`*^9}, {3.671472624675124*^9, 
+   3.67147262567264*^9}}]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -1727,7 +1816,7 @@ Cell[BoxData[
                     RowBox[{"{", 
                     RowBox[{"4", ",", "4"}], "}"}]}], ",", "1.2"}], "]"}], 
                     "&"}], "/@", "dots"}]}], "}"}], ",", 
-                  RowBox[{"UpdateInterval", "\[Rule]", ".1"}]}], "]"}], ",", 
+                  RowBox[{"UpdateInterval", "\[Rule]", ".25"}]}], "]"}], ",", 
                 "\[IndentingNewLine]", 
                 RowBox[{"Dynamic", "[", 
                  RowBox[{
@@ -1741,7 +1830,7 @@ Cell[BoxData[
                     RowBox[{"{", 
                     RowBox[{"4", ",", "4"}], "}"}]}], ",", "2"}], "]"}], 
                     "&"}], "/@", "power"}]}], "}"}], ",", 
-                  RowBox[{"UpdateInterval", "\[Rule]", ".1"}]}], "]"}], ",", 
+                  RowBox[{"UpdateInterval", "\[Rule]", ".25"}]}], "]"}], ",", 
                 "\[IndentingNewLine]", 
                 RowBox[{"Dynamic", "[", 
                  RowBox[{
@@ -1772,7 +1861,7 @@ Cell[BoxData[
                     RowBox[{"i", ",", 
                     RowBox[{"Length", "@", "ghosts"}]}], "}"}]}], "]"}], ",", 
                   
-                  RowBox[{"UpdateInterval", "\[Rule]", ".1"}]}], "]"}], ",", 
+                  RowBox[{"UpdateInterval", "\[Rule]", ".25"}]}], "]"}], ",", 
                 "\[IndentingNewLine]", 
                 RowBox[{"Dynamic", "[", 
                  RowBox[{
@@ -1796,7 +1885,7 @@ Cell[BoxData[
                     RowBox[{
                     RowBox[{"-", "1"}], ",", 
                     RowBox[{"-", "1"}]}], "}"}], ",", "8"}], "]"}], ",", 
-                  RowBox[{"UpdateInterval", "\[Rule]", ".1"}]}], "]"}], ",", 
+                  RowBox[{"UpdateInterval", "\[Rule]", ".25"}]}], "]"}], ",", 
                 "\[IndentingNewLine]", 
                 RowBox[{"Text", "[", 
                  RowBox[{
@@ -1832,7 +1921,7 @@ Cell[BoxData[
                     "map", "\[LeftDoubleBracket]", "1", 
                     "\[RightDoubleBracket]"}]}]}], "+", "8"}]}], "}"}]}], 
                    "]"}], ",", 
-                  RowBox[{"UpdateInterval", "\[Rule]", ".1"}]}], "]"}], ",", 
+                  RowBox[{"UpdateInterval", "\[Rule]", ".25"}]}], "]"}], ",", 
                 "\[IndentingNewLine]", 
                 RowBox[{"Text", "[", 
                  RowBox[{
@@ -1864,25 +1953,7 @@ Cell[BoxData[
                     "map", "\[LeftDoubleBracket]", "1", 
                     "\[RightDoubleBracket]"}]}]}], "+", "8"}]}], "}"}]}], 
                    "]"}], ",", 
-                  RowBox[{"UpdateInterval", "\[Rule]", ".1"}]}], "]"}], ",", 
-                "\[IndentingNewLine]", 
-                RowBox[{"Dynamic", "[", 
-                 RowBox[{
-                  RowBox[{"Text", "[", 
-                   RowBox[{
-                    RowBox[{"Style", "[", 
-                    RowBox[{"pacman", ",", 
-                    RowBox[{"FontSize", "\[Rule]", "27"}]}], "]"}], ",", 
-                    RowBox[{"{", 
-                    RowBox[{"16", ",", 
-                    RowBox[{
-                    RowBox[{"8", 
-                    RowBox[{"Length", "@", 
-                    RowBox[{
-                    "map", "\[LeftDoubleBracket]", "1", 
-                    "\[RightDoubleBracket]"}]}]}], "+", "8"}]}], "}"}]}], 
-                   "]"}], ",", 
-                  RowBox[{"UpdateInterval", "\[Rule]", ".1"}]}], "]"}], ",", 
+                  RowBox[{"UpdateInterval", "\[Rule]", ".25"}]}], "]"}], ",", 
                 "\[IndentingNewLine]", 
                 RowBox[{"Text", "[", 
                  RowBox[{
@@ -1900,13 +1971,14 @@ Cell[BoxData[
                     "map", "\[LeftDoubleBracket]", "1", 
                     "\[RightDoubleBracket]"}]}]}], "+", "16"}]}], "}"}]}], 
                  "]"}], ",", "\[IndentingNewLine]", 
-                RowBox[{"Dynamic", "@", 
-                 RowBox[{"Text", "[", 
-                  RowBox[{
-                   RowBox[{"Style", "[", 
+                RowBox[{"Dynamic", "[", 
+                 RowBox[{
+                  RowBox[{"Text", "[", 
+                   RowBox[{
+                    RowBox[{"Style", "[", 
                     RowBox[{"deathCounter", ",", 
                     RowBox[{"FontSize", "\[Rule]", "27"}]}], "]"}], ",", 
-                   RowBox[{"{", 
+                    RowBox[{"{", 
                     RowBox[{
                     RowBox[{"7", 
                     RowBox[{"Length", "@", "map"}]}], ",", 
@@ -1915,8 +1987,9 @@ Cell[BoxData[
                     RowBox[{"Length", "@", 
                     RowBox[{
                     "map", "\[LeftDoubleBracket]", "1", 
-                    "\[RightDoubleBracket]"}]}]}], "+", "8"}]}], "}"}], ",", 
-                   RowBox[{"UpdateInterval", "\[Rule]", ".1"}]}], "]"}]}]}], 
+                    "\[RightDoubleBracket]"}]}]}], "+", "8"}]}], "}"}]}], 
+                   "]"}], ",", 
+                  RowBox[{"UpdateInterval", "\[Rule]", ".25"}]}], "]"}]}], 
                "\[IndentingNewLine]", "}"}]}], ",", "\[IndentingNewLine]", 
              RowBox[{"(*", 
               RowBox[{
@@ -2005,31 +2078,13 @@ Cell[BoxData[
    3.6711379707359858`*^9, 3.6711379707879887`*^9}, {3.671138011334296*^9, 
    3.671138011791342*^9}, {3.6711386146874585`*^9, 3.6711386150794587`*^9}, {
    3.6711386645164585`*^9, 3.671138738864959*^9}, {3.6711391824649587`*^9, 
-   3.6711391995899587`*^9}}],
-
-Cell[CellGroupData[{
-
-Cell[BoxData[
- RowBox[{"round", "[", 
-  RowBox[{"{", 
-   RowBox[{"15", ",", "25"}], "}"}], "]"}]], "Input",
- CellChangeTimes->{{3.6711374202726035`*^9, 3.6711374246130347`*^9}}],
-
-Cell[BoxData[
- RowBox[{"{", 
-  RowBox[{"8", ",", "24"}], "}"}]], "Output",
- CellChangeTimes->{
-  3.671137425109084*^9, 3.671137539756581*^9, 3.6711376046721334`*^9, 
-   3.671137923433095*^9, 3.67113798344485*^9, {3.671138056759685*^9, 
-   3.671138079713587*^9}, {3.67113814278802*^9, 3.671138159628805*^9}, 
-   3.671138252330735*^9, 3.6711387423489585`*^9, 3.6711388580754585`*^9, 
-   3.6711392496849585`*^9, 3.6711393751764584`*^9, 3.6711394276614585`*^9}]
-}, Open  ]]
+   3.6711391995899587`*^9}, {3.6711403812114587`*^9, 
+   3.6711403928619585`*^9}, {3.6714721988427753`*^9, 3.6714722314782763`*^9}}]
 }, Open  ]]
 }, Open  ]]
 },
-WindowSize->{1304, 710},
-WindowMargins->{{-8, Automatic}, {Automatic, 0}},
+WindowSize->{1304, 726},
+WindowMargins->{{-8, Automatic}, {Automatic, -8}},
 FrontEndVersion->"10.1 for Microsoft Windows (64-bit) (March 23, 2015)",
 StyleDefinitions->"Default.nb"
 ]
@@ -2063,28 +2118,31 @@ Cell[2097, 76, 106, 1, 39, "Subsubsection"],
 Cell[2206, 79, 2657, 62, 252, "Input"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[4900, 146, 101, 1, 39, "Subsubsection"],
+Cell[4900, 146, 103, 1, 39, "Subsubsection"],
+Cell[5006, 149, 4156, 92, 412, "Input"]
+}, Open  ]],
 Cell[CellGroupData[{
-Cell[5026, 151, 27418, 583, 2092, "Input"],
-Cell[32447, 736, 519, 11, 42, "Message"],
-Cell[32969, 749, 519, 11, 42, "Message"]
+Cell[9199, 246, 103, 1, 39, "Subsubsection"],
+Cell[9305, 249, 1865, 47, 72, "Input"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[11207, 301, 101, 1, 39, "Subsubsection"],
+Cell[CellGroupData[{
+Cell[11333, 306, 25045, 524, 1812, "Input"],
+Cell[36381, 832, 659, 13, 42, "Message"]
 }, Open  ]]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[33537, 766, 108, 1, 39, "Subsubsection"],
-Cell[33648, 769, 431, 11, 92, "Input"]
+Cell[37089, 851, 108, 1, 39, "Subsubsection"],
+Cell[37200, 854, 431, 11, 92, "Input"]
 }, Closed]],
 Cell[CellGroupData[{
-Cell[34116, 785, 102, 1, 33, "Subsubsection"],
-Cell[34221, 788, 39260, 638, 1352, "Input"]
+Cell[37668, 870, 102, 1, 33, "Subsubsection"],
+Cell[37773, 873, 39563, 642, 1352, "Input"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[73518, 1431, 102, 1, 39, "Subsubsection"],
-Cell[73623, 1434, 24680, 573, 1405, "Input"],
-Cell[CellGroupData[{
-Cell[98328, 2011, 177, 4, 31, "Input"],
-Cell[98508, 2017, 457, 8, 31, "Output"]
-}, Open  ]]
+Cell[77373, 1520, 102, 1, 39, "Subsubsection"],
+Cell[77478, 1523, 24059, 558, 1385, "Input"]
 }, Open  ]]
 }, Open  ]]
 }
