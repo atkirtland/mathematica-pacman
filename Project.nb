@@ -10,10 +10,10 @@
 NotebookFileLineBreakTest
 NotebookFileLineBreakTest
 NotebookDataPosition[       158,          7]
-NotebookDataLength[    104449,       2169]
-NotebookOptionsPosition[    102828,       2108]
-NotebookOutlinePosition[    103172,       2123]
-CellTagsIndexPosition[    103129,       2120]
+NotebookDataLength[    104491,       2166]
+NotebookOptionsPosition[    102858,       2106]
+NotebookOutlinePosition[    103201,       2121]
+CellTagsIndexPosition[    103158,       2118]
 WindowFrame->Normal*)
 
 (* Beginning of Notebook Content *)
@@ -34,11 +34,17 @@ Cell[BoxData[{
   RowBox[{"Clear", "@", "playSound"}], ";"}], "\[IndentingNewLine]", 
  RowBox[{
   RowBox[{
-   RowBox[{"playSound", "[", "filename_String", "]"}], ":=", 
-   RowBox[{"EmitSound", "@", 
-    RowBox[{"Import", "[", 
-     RowBox[{"filename", ",", "\"\<WAV\>\""}], "]"}]}]}], ";"}]}], "Input",
- CellChangeTimes->{{3.671472978424511*^9, 3.671472983369587*^9}}]
+   RowBox[{"playSound", "[", "filename_String", "]"}], ":=", "None"}], ";", 
+  RowBox[{"(*", 
+   RowBox[{
+    RowBox[{"EmitSound", "@", 
+     RowBox[{"Import", "[", 
+      RowBox[{"filename", ",", "\"\<WAV\>\""}], "]"}]}], ";"}], 
+   "*)"}]}]}], "Input",
+ CellChangeTimes->{{3.671472978424511*^9, 3.671472983369587*^9}, {
+   3.671485121305526*^9, 3.671485130847066*^9}, {3.6714851631839*^9, 
+   3.671485170735827*^9}, 3.671485219497597*^9, {3.6714863657393475`*^9, 
+   3.6714863732247705`*^9}}]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -46,11 +52,9 @@ Cell[CellGroupData[{
 Cell["updateMovement", "Subsubsection",
  CellChangeTimes->{{3.6707140540407486`*^9, 3.6707140561308317`*^9}}],
 
-Cell[CellGroupData[{
-
 Cell[BoxData[{
  RowBox[{
-  RowBox[{"Clear", "@", "updateMovement"}], "'"}], "\[IndentingNewLine]", 
+  RowBox[{"Clear", "@", "updateMovement"}], ";"}], "\[IndentingNewLine]", 
  RowBox[{
   RowBox[{
    RowBox[{"updateMovement", "[", "movement_", "]"}], ":=", 
@@ -62,17 +66,10 @@ Cell[BoxData[{
      RowBox[{"dir", "=", "movement"}], ",", 
      RowBox[{"nextDir", "=", "movement"}]}], "]"}]}], ";"}]}], "Input",
  CellChangeTimes->{
-  3.670714021764453*^9, {3.6714729700493827`*^9, 3.6714729765044813`*^9}}],
-
-Cell[BoxData[
- SuperscriptBox["Null", "\[Prime]",
-  MultilineFunction->None]], "Output",
- CellChangeTimes->{
-  3.6714730696284122`*^9, 3.6714732371383543`*^9, 3.6714737588284693`*^9, 
-   3.6714738108354893`*^9, 3.67147387159902*^9, 3.6714739680489583`*^9, 
-   3.671474017476779*^9, 3.6714741034713783`*^9, 3.6714741992584968`*^9, {
-   3.671474265963838*^9, 3.6714742860624113`*^9}, 3.6714744109496536`*^9}]
-}, Open  ]]
+  3.670714021764453*^9, {3.6714729700493827`*^9, 3.6714729765044813`*^9}, {
+   3.67148314421873*^9, 3.6714831453794327`*^9}, {3.671485173633992*^9, 
+   3.671485178718777*^9}, {3.6714852136747675`*^9, 3.671485214601819*^9}, 
+   3.671485941222873*^9, 3.67148676304241*^9}]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -86,11 +83,34 @@ Cell[BoxData[{
  RowBox[{
   RowBox[{
    RowBox[{"round", "[", "list_", "]"}], ":=", 
-   RowBox[{"8", 
-    RowBox[{"Floor", "[", 
-     FractionBox["list", "8"], "]"}]}]}], ";"}]}], "Input",
+   RowBox[{
+    RowBox[{"round", "[", "list", "]"}], "=", 
+    RowBox[{"8", 
+     RowBox[{"Floor", "[", 
+      FractionBox["list", "8."], "]"}]}]}]}], ";"}]}], "Input",
  CellChangeTimes->{{3.6707686802623825`*^9, 3.670768705533827*^9}, {
-  3.671472986044628*^9, 3.6714729894496803`*^9}}]
+  3.671472986044628*^9, 3.6714729894496803`*^9}, {3.6714840046115503`*^9, 
+  3.671484005748114*^9}, {3.671485139459556*^9, 3.6714851583386235`*^9}, {
+  3.6714852733206425`*^9, 3.6714852743527017`*^9}, {3.6714853194022307`*^9, 
+  3.671485320921315*^9}, {3.671485374284316*^9, 3.6714853796196127`*^9}, {
+  3.671485442465102*^9, 3.6714854636587954`*^9}, {3.6714854947242503`*^9, 
+  3.671485494944254*^9}}]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["stopScheduledTasks", "Subsubsection",
+ CellChangeTimes->{{3.6714845463045583`*^9, 3.671484549093712*^9}}],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{
+   RowBox[{"stopScheduledTasks", "[", "]"}], ":=", 
+   RowBox[{
+    RowBox[{
+     RowBox[{"RemoveScheduledTask", "@", "#"}], "&"}], "/@", 
+    RowBox[{"ScheduledTasks", "[", "]"}]}]}], ";"}]], "Input",
+ CellChangeTimes->{{3.6714845557690873`*^9, 3.6714845831656017`*^9}}]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -163,7 +183,10 @@ Cell[BoxData[{
           "\[RightDoubleBracket]"}]}], "]"}]}], "\[IndentingNewLine]", 
       "]"}]}], "\[IndentingNewLine]", "]"}]}], ";"}]}], "Input",
  CellChangeTimes->{
-  3.670714037441081*^9, {3.671472961076745*^9, 3.6714729674668427`*^9}}]
+  3.670714037441081*^9, {3.671472961076745*^9, 3.6714729674668427`*^9}, {
+   3.6714851905964527`*^9, 3.6714851958217487`*^9}, 3.671485229332656*^9, {
+   3.671485264740172*^9, 3.6714852667582817`*^9}, {3.67148532708066*^9, 
+   3.671485332151946*^9}}]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -177,96 +200,82 @@ Cell[BoxData[{
  RowBox[{
   RowBox[{
    RowBox[{"collisions", "[", "]"}], ":=", 
-   RowBox[{"Module", "[", 
+   RowBox[{"For", "[", 
     RowBox[{
-     RowBox[{"{", 
-      RowBox[{"i", "=", "1"}], "}"}], ",", "\[IndentingNewLine]", 
+     RowBox[{"i", "=", "1"}], ",", 
+     RowBox[{"i", "\[LessEqual]", "4"}], ",", 
+     RowBox[{"i", "++"}], ",", "\[IndentingNewLine]", 
      RowBox[{
-      RowBox[{"For", "[", 
-       RowBox[{"i", ",", 
-        RowBox[{"i", "\[LessEqual]", "4"}], ",", 
-        RowBox[{"i", "++"}], ",", "\[IndentingNewLine]", 
+      RowBox[{"If", "[", 
+       RowBox[{
+        RowBox[{
+         RowBox[{
+         "ghosts", "\[LeftDoubleBracket]", "i", "\[RightDoubleBracket]"}], 
+         "\[Equal]", "pacman"}], ",", 
+        RowBox[{"(*", 
+         RowBox[{
+         "Uses", " ", "ghost", " ", "pacman", " ", "has", " ", "collided", 
+          " ", "with"}], "*)"}], "\[IndentingNewLine]", 
+        RowBox[{"(*", 
+         RowBox[{
+         "If", " ", "frightened", " ", "mode", " ", "is", " ", "active", " ", 
+          "then", " ", "the", " ", "ghost", " ", "is", " ", "returned", " ", 
+          "to", " ", "the", " ", "center"}], "*)"}], "\[IndentingNewLine]", 
         RowBox[{
          RowBox[{"If", "[", 
           RowBox[{
            RowBox[{
+           "isFrightened", "\[LeftDoubleBracket]", "i", 
+            "\[RightDoubleBracket]"}], ",", "\[IndentingNewLine]", 
+           RowBox[{
             RowBox[{
-            "ghosts", "\[LeftDoubleBracket]", "i", "\[RightDoubleBracket]"}], 
-            "\[Equal]", "pacman"}], ",", 
+             RowBox[{
+             "ghosts", "\[LeftDoubleBracket]", "i", "\[RightDoubleBracket]"}],
+              "=", 
+             RowBox[{"{", 
+              RowBox[{"104", ",", "152"}], "}"}]}], ";", 
+            RowBox[{"killCounter", "++"}], ";", 
+            RowBox[{"Switch", "[", 
+             RowBox[{"killCounter", ",", "1", ",", 
+              RowBox[{"score", "+=", "200"}], ",", "2", ",", 
+              RowBox[{"score", "+=", "400"}], ",", "3", ",", 
+              RowBox[{"score", "+=", "800"}], ",", "4", ",", 
+              RowBox[{"score", "+=", "1600"}]}], "]"}], ";", 
+            RowBox[{"playSound", "[", "\"\<Ghost Eat.wav\>\"", "]"}]}], ",", 
+           "\[IndentingNewLine]", 
            RowBox[{"(*", 
             RowBox[{
-            "Uses", " ", "ghost", " ", "pacman", " ", "has", " ", "collided", 
-             " ", "with"}], "*)"}], "\[IndentingNewLine]", 
+            "If", " ", "frightened", " ", "mode", " ", "is", " ", "not", " ", 
+             "active", " ", "pacman", " ", "is", " ", "returned", " ", "to", 
+             " ", "spawn"}], "*)"}], "\[IndentingNewLine]", 
            RowBox[{
+            RowBox[{"pacman", "=", "spawn"}], ";", 
+            RowBox[{"ghosts", "=", "ghostSpawns"}], ";", 
+            RowBox[{"counter", "=", 
+             RowBox[{"-", "1"}]}], ";", 
+            RowBox[{"deathCounter", "--"}], ";", "\[IndentingNewLine]", 
+            RowBox[{"EmitSound", "@", 
+             RowBox[{"Import", "[", 
+              RowBox[{"\"\<Pacman-death-sound.mp3\>\"", ",", "\"\<MP3\>\""}], 
+              "]"}]}], ";", "\[IndentingNewLine]", 
             RowBox[{"If", "[", 
              RowBox[{
+              RowBox[{"deathCounter", "<", "1"}], ",", "\[IndentingNewLine]", 
+              
               RowBox[{
-               RowBox[{
-               "isFrightened", "\[LeftDoubleBracket]", "i", 
-                "\[RightDoubleBracket]"}], "\[Equal]", "True"}], ",", 
-              RowBox[{"(*", 
-               RowBox[{
-               "If", " ", "frightened", " ", "mode", " ", "is", " ", "active",
-                 " ", "then", " ", "the", " ", "ghost", " ", "is", " ", 
-                "returned", " ", "to", " ", "the", " ", "center"}], "*)"}], 
-              "\[IndentingNewLine]", 
-              RowBox[{
-               RowBox[{
-                RowBox[{
-                "ghosts", "\[LeftDoubleBracket]", "i", 
-                 "\[RightDoubleBracket]"}], "=", 
-                RowBox[{"{", 
-                 RowBox[{"104", ",", "152"}], "}"}]}], ";", 
+               RowBox[{"score", "=", "0"}], ";", "\[IndentingNewLine]", 
+               RowBox[{"NotebookClose", "[", "]"}], ";", 
                "\[IndentingNewLine]", 
-               RowBox[{"killCounter", "++"}], ";", "\[IndentingNewLine]", 
-               RowBox[{"Which", "[", 
-                RowBox[{
-                 RowBox[{"killCounter", "\[Equal]", "1"}], ",", 
-                 RowBox[{"score", "+=", "200"}], ",", 
-                 RowBox[{"killCounter", "\[Equal]", "2"}], ",", 
-                 RowBox[{"score", "+=", "400"}], ",", 
-                 RowBox[{"killCounter", "\[Equal]", "3"}], ",", 
-                 RowBox[{"score", "+=", "800"}], ",", 
-                 RowBox[{"killCounter", "\[Equal]", "4"}], ",", 
-                 RowBox[{"score", "+=", "1600"}]}], "]"}], ";"}]}], 
-             "\[IndentingNewLine]", "]"}], ";", "\[IndentingNewLine]", 
-            RowBox[{"If", "[", 
-             RowBox[{
-              RowBox[{
-               RowBox[{
-               "isFrightened", "\[LeftDoubleBracket]", "i", 
-                "\[RightDoubleBracket]"}], "\[Equal]", "False"}], ",", 
-              RowBox[{"(*", 
-               RowBox[{
-               "If", " ", "frightened", " ", "mode", " ", "is", " ", "not", 
-                " ", "active", " ", "pacman", " ", "is", " ", "returned", " ",
-                 "to", " ", "spawn"}], "*)"}], "\[IndentingNewLine]", 
-              RowBox[{
-               RowBox[{"pacman", "=", "spawn"}], ";", 
-               RowBox[{"ghosts", "=", "ghostSpawns"}], ";", 
-               RowBox[{"counter", "=", 
-                RowBox[{"-", "1"}]}], ";", 
-               RowBox[{"deathCounter", "--"}], ";", "\[IndentingNewLine]", 
-               RowBox[{"EmitSound", "@", 
-                RowBox[{"Import", "[", 
-                 RowBox[{
-                 "\"\<Pacman-death-sound.mp3\>\"", ",", "\"\<MP3\>\""}], 
-                 "]"}]}], ";", "\[IndentingNewLine]", 
-               RowBox[{"If", "[", 
-                RowBox[{
-                 RowBox[{"deathCounter", "<", "1"}], ",", 
-                 "\[IndentingNewLine]", 
-                 RowBox[{
-                  RowBox[{"score", "=", "0"}], ";", "\[IndentingNewLine]", 
-                  RowBox[{"NotebookClose", "[", "]"}], ";", 
-                  "\[IndentingNewLine]", 
-                  RowBox[{"StopScheduledTask", "[", "update", "]"}], ";"}]}], 
-                "\[IndentingNewLine]", "]"}]}]}], "\[IndentingNewLine]", 
-             "]"}], ";"}]}], "\[IndentingNewLine]", "]"}], ";"}]}], 
-       "\[IndentingNewLine]", "]"}], ";"}]}], "\[IndentingNewLine]", "]"}]}], 
-  ";"}]}], "Input",
+               RowBox[{"stopScheduledTasks", "[", "]"}], ";"}]}], 
+             "\[IndentingNewLine]", "]"}]}]}], "\[IndentingNewLine]", "]"}], 
+         ";"}]}], "\[IndentingNewLine]", "]"}], ";"}]}], 
+    "\[IndentingNewLine]", "]"}]}], ";"}]}], "Input",
  CellChangeTimes->{
-  3.6711407970039587`*^9, {3.6714729926447296`*^9, 3.6714729985123196`*^9}}]
+  3.6711407970039587`*^9, {3.6714729926447296`*^9, 3.6714729985123196`*^9}, {
+   3.6714836724647923`*^9, 3.671483754916542*^9}, {3.671483788111102*^9, 
+   3.671483803872831*^9}, {3.6714838518802557`*^9, 3.6714838782391376`*^9}, {
+   3.671484665933894*^9, 3.6714846723492537`*^9}, 3.6714852811240826`*^9, {
+   3.671486939857429*^9, 3.6714869707381716`*^9}}]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -331,8 +340,6 @@ Cell[CellGroupData[{
 
 Cell["update", "Subsubsection",
  CellChangeTimes->{{3.6707141451944103`*^9, 3.6707141478645167`*^9}}],
-
-Cell[CellGroupData[{
 
 Cell[BoxData[
  RowBox[{
@@ -847,28 +854,7 @@ Cell[BoxData[
    3.6714739634463873`*^9, 3.6714739643589015`*^9}, {3.6714740091066504`*^9, 
    3.671474012394201*^9}, {3.6714740894786634`*^9, 3.671474096298768*^9}, {
    3.671474190053355*^9, 3.6714741910258703`*^9}, {3.6714742396709347`*^9, 
-   3.671474257321205*^9}, {3.671474547684614*^9, 3.671474552839693*^9}}],
-
-Cell[BoxData[
- RowBox[{
-  StyleBox[
-   RowBox[{"CreateScheduledTask", "::", "timt"}], "MessageName"], 
-  RowBox[{
-  ":", " "}], "\<\"Number of seconds \[NoBreak]\\!\\(1\\/perSecond\\)\
-\[NoBreak] is not a positive number. \
-\\!\\(\\*ButtonBox[\\\"\[RightSkeleton]\\\", ButtonStyle->\\\"Link\\\", \
-ButtonFrame->None, ButtonData:>\\\"paclet:ref/CreateScheduledTask\\\", \
-ButtonNote -> \\\"CreateScheduledTask::timt\\\"]\\)\"\>"}]], "Message", "MSG",
- 
- CellChangeTimes->{
-  3.671471105384798*^9, 3.671471591727604*^9, 3.671472234398321*^9, 
-   3.671472421533079*^9, 3.6714724773947926`*^9, 3.671472629277695*^9, 
-   3.6714727509368134`*^9, 3.6714728232712708`*^9, 3.671473069788415*^9, 
-   3.671473237358358*^9, 3.671473758975971*^9, 3.671473810990492*^9, 
-   3.671473871756522*^9, 3.671473968223961*^9, 3.671474017631781*^9, 
-   3.6714741036288805`*^9, 3.671474199413499*^9, {3.671474266126341*^9, 
-   3.671474286219914*^9}, 3.6714744111021557`*^9}]
-}, Open  ]]
+   3.671474257321205*^9}, {3.671474547684614*^9, 3.671474552839693*^9}}]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -1005,7 +991,11 @@ Cell[BoxData[
     RowBox[{"ghostColors", "=", 
      RowBox[{"{", 
       RowBox[{"Red", ",", "Cyan", ",", "Pink", ",", "Orange"}], "}"}]}], 
-    ";"}], "\[IndentingNewLine]", "\[IndentingNewLine]", 
+    ";"}], "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"ghostSprites", "=", 
+     RowBox[{"{", "}"}]}], ";"}], "\[IndentingNewLine]", 
+   "\[IndentingNewLine]", 
    RowBox[{"(*", 
     RowBox[{"path", " ", "variables"}], "*)"}], "\[IndentingNewLine]", 
    RowBox[{"(*", 
@@ -1112,8 +1102,8 @@ Cell[BoxData[
         RowBox[{"updateMovement", "[", "right", "]"}]}], ",", 
        "\[IndentingNewLine]", 
        RowBox[{"\"\<WindowClose\>\"", "\[RuleDelayed]", 
-        RowBox[{"RemoveScheduledTask", "[", "update", "]"}]}]}], 
-      "\[IndentingNewLine]", "}"}]}], ";"}]}]}]], "Input",
+        RowBox[{"stopScheduledTasks", "[", "]"}]}]}], "\[IndentingNewLine]", 
+      "}"}]}], ";"}]}]}]], "Input",
  CellChangeTimes->{{3.667678992633033*^9, 3.667678997148484*^9}, {
    3.6676795030520697`*^9, 3.667679580036767*^9}, {3.66767963267303*^9, 
    3.6676796448392467`*^9}, {3.6676797628918886`*^9, 
@@ -1540,7 +1530,10 @@ Cell[BoxData[
    3.67147262567264*^9}, {3.671473232133278*^9, 3.6714732324057817`*^9}, {
    3.6714738074629374`*^9, 3.6714738077829423`*^9}, {3.6714738624816813`*^9, 
    3.671473862663191*^9}, {3.671473954293747*^9, 3.671473954356248*^9}, {
-   3.671474281737345*^9, 3.67147428205485*^9}}]
+   3.671474281737345*^9, 3.67147428205485*^9}, {3.6714833580966077`*^9, 
+   3.671483366198022*^9}, {3.671483504310887*^9, 3.671483510973999*^9}, {
+   3.671484408306191*^9, 3.6714844284234266`*^9}, {3.6714846399164515`*^9, 
+   3.671484647543865*^9}, {3.671485532888054*^9, 3.6714855603445635`*^9}}]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -1570,7 +1563,7 @@ Cell[BoxData[
           RowBox[{"Flatten", "@", 
            RowBox[{"Characters", "@", "#"}]}]}], "&"}], "/@", 
         RowBox[{"Import", "[", 
-         RowBox[{"\"\<map3.txt\>\"", ",", "\"\<Table\>\""}], "]"}]}], 
+         RowBox[{"\"\<map.txt\>\"", ",", "\"\<Table\>\""}], "]"}]}], 
        "]"}]}]}], ";"}], "\[IndentingNewLine]", 
    RowBox[{
     RowBox[{"pacmanSprite", "=", 
@@ -2081,7 +2074,7 @@ Cell[BoxData[
                "directions"}], "]"}], ">", "2"}]}], "]"}]}], "]"}]}], ";", 
        "\[IndentingNewLine]", "\[IndentingNewLine]", 
        RowBox[{"ghostSpawns", " ", "=", " ", "ghosts"}], ";", 
-       "\[IndentingNewLine]", "\[IndentingNewLine]", 
+       "\[IndentingNewLine]", 
        RowBox[{"playSound", "[", "\"\<Start Music.wav\>\"", "]"}], ";", 
        "\[IndentingNewLine]", 
        RowBox[{"(*", 
@@ -2102,12 +2095,17 @@ Cell[BoxData[
    3.6711403928619585`*^9}, {3.6714721988427753`*^9, 3.6714722314782763`*^9}, 
    3.6714735674364147`*^9, {3.6714737496733284`*^9, 3.6714737528708773`*^9}, {
    3.6714740690783496`*^9, 3.6714740773184767`*^9}, {3.671474560484811*^9, 
-   3.6714745662148986`*^9}}]
+   3.6714745662148986`*^9}, 3.671483635308526*^9, {3.6714843747480693`*^9, 
+   3.6714843768178997`*^9}, {3.6714856230878773`*^9, 
+   3.6714856256721163`*^9}, {3.671486206121791*^9, 3.671486208672928*^9}}],
+
+Cell[BoxData[""], "Input",
+ CellChangeTimes->{{3.6714862015825415`*^9, 3.6714862039096727`*^9}}]
 }, Open  ]]
 }, Open  ]]
 },
-WindowSize->{1304, 726},
-WindowMargins->{{-8, Automatic}, {Automatic, -8}},
+WindowSize->{1304, 710},
+WindowMargins->{{-8, Automatic}, {Automatic, 0}},
 FrontEndVersion->"10.1 for Microsoft Windows (64-bit) (March 23, 2015)",
 StyleDefinitions->"Default.nb"
 ]
@@ -2126,49 +2124,48 @@ Cell[CellGroupData[{
 Cell[580, 22, 175, 2, 70, "Section"],
 Cell[CellGroupData[{
 Cell[780, 28, 102, 1, 39, "Subsubsection"],
-Cell[885, 31, 377, 9, 52, "Input"]
+Cell[885, 31, 610, 15, 52, "Input"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[1299, 45, 109, 1, 39, "Subsubsection"],
-Cell[CellGroupData[{
-Cell[1433, 50, 546, 14, 52, "Input"],
-Cell[1982, 66, 406, 7, 31, "Output"]
-}, Open  ]]
+Cell[1532, 51, 109, 1, 39, "Subsubsection"],
+Cell[1644, 54, 742, 17, 52, "Input"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[2437, 79, 98, 1, 39, "Subsubsection"],
-Cell[2538, 82, 382, 10, 67, "Input"]
+Cell[2423, 76, 98, 1, 39, "Subsubsection"],
+Cell[2524, 79, 800, 17, 67, "Input"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[2957, 97, 106, 1, 39, "Subsubsection"],
-Cell[3066, 100, 2794, 65, 272, "Input"]
+Cell[3361, 101, 111, 1, 39, "Subsubsection"],
+Cell[3475, 104, 306, 8, 31, "Input"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[5897, 170, 103, 1, 39, "Subsubsection"],
-Cell[6003, 173, 4292, 95, 432, "Input"]
+Cell[3818, 117, 106, 1, 39, "Subsubsection"],
+Cell[3927, 120, 2971, 68, 272, "Input"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[10332, 273, 103, 1, 39, "Subsubsection"],
-Cell[10438, 276, 2000, 50, 92, "Input"]
+Cell[6935, 193, 103, 1, 39, "Subsubsection"],
+Cell[7041, 196, 3673, 81, 412, "Input"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[12475, 331, 101, 1, 39, "Subsubsection"],
-Cell[CellGroupData[{
-Cell[12601, 336, 24610, 513, 1791, "Input"],
-Cell[37214, 851, 950, 18, 42, "Message"]
-}, Open  ]]
+Cell[10751, 282, 103, 1, 39, "Subsubsection"],
+Cell[10857, 285, 2000, 50, 92, "Input"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[38213, 875, 108, 1, 39, "Subsubsection"],
-Cell[38324, 878, 431, 11, 92, "Input"]
+Cell[12894, 340, 101, 1, 39, "Subsubsection"],
+Cell[12998, 343, 24610, 513, 1791, "Input"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[37645, 861, 108, 1, 39, "Subsubsection"],
+Cell[37756, 864, 431, 11, 92, "Input"]
 }, Closed]],
 Cell[CellGroupData[{
-Cell[38792, 894, 102, 1, 33, "Subsubsection"],
-Cell[38897, 897, 39812, 645, 1352, "Input"]
+Cell[38224, 880, 102, 1, 33, "Subsubsection"],
+Cell[38329, 883, 40159, 652, 1372, "Input"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[78746, 1547, 102, 1, 39, "Subsubsection"],
-Cell[78851, 1550, 23949, 554, 1305, "Input"]
+Cell[78525, 1540, 102, 1, 39, "Subsubsection"],
+Cell[78630, 1543, 24101, 556, 1285, "Input"],
+Cell[102734, 2101, 96, 1, 31, "Input"]
 }, Open  ]]
 }, Open  ]]
 }
