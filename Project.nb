@@ -10,10 +10,10 @@
 NotebookFileLineBreakTest
 NotebookFileLineBreakTest
 NotebookDataPosition[       158,          7]
-NotebookDataLength[    130310,       2695]
-NotebookOptionsPosition[    128395,       2625]
-NotebookOutlinePosition[    128739,       2640]
-CellTagsIndexPosition[    128696,       2637]
+NotebookDataLength[    130049,       2685]
+NotebookOptionsPosition[    128206,       2618]
+NotebookOutlinePosition[    128550,       2633]
+CellTagsIndexPosition[    128507,       2630]
 WindowFrame->Normal*)
 
 (* Beginning of Notebook Content *)
@@ -74,8 +74,6 @@ Cell[CellGroupData[{
 Cell["round", "Subsubsection",
  CellChangeTimes->{{3.6707686747894773`*^9, 3.670768675295376*^9}}],
 
-Cell[CellGroupData[{
-
 Cell[BoxData[{
  RowBox[{
   RowBox[{"Clear", "@", "round"}], ";"}], "\[IndentingNewLine]", 
@@ -86,19 +84,14 @@ Cell[BoxData[{
     RowBox[{"round", "[", "list", "]"}], "=", 
     RowBox[{"8", 
      RowBox[{"Floor", "[", 
-      FractionBox["list", "8."], "]"}]}]}]}], ";", "s"}]}], "Input",
+      FractionBox["list", "8."], "]"}]}]}]}], ";"}]}], "Input",
  CellChangeTimes->{{3.6707686802623825`*^9, 3.670768705533827*^9}, {
    3.671472986044628*^9, 3.6714729894496803`*^9}, {3.6714840046115503`*^9, 
    3.671484005748114*^9}, {3.671485139459556*^9, 3.6714851583386235`*^9}, {
    3.6714852733206425`*^9, 3.6714852743527017`*^9}, {3.6714853194022307`*^9, 
    3.671485320921315*^9}, {3.671485374284316*^9, 3.6714853796196127`*^9}, {
    3.671485442465102*^9, 3.6714854636587954`*^9}, {3.6714854947242503`*^9, 
-   3.671485494944254*^9}, 3.6719786222243834`*^9}],
-
-Cell[BoxData["s"], "Output",
- CellChangeTimes->{3.6719786239283857`*^9, 3.671978797352656*^9, 
-  3.6719789597448907`*^9, 3.6719790472266665`*^9, 3.6719793711724963`*^9}]
-}, Open  ]]
+   3.671485494944254*^9}, 3.6719786222243834`*^9, 3.681652703036721*^9}]
 }, Open  ]],
 
 Cell[CellGroupData[{
@@ -2623,9 +2616,9 @@ Cell[BoxData[{
 }, Open  ]]
 }, Open  ]]
 },
-WindowSize->{1304, 726},
+WindowSize->{1366, 695},
 WindowMargins->{{-8, Automatic}, {Automatic, -8}},
-FrontEndVersion->"10.1 for Microsoft Windows (64-bit) (March 23, 2015)",
+FrontEndVersion->"10.4 for Microsoft Windows (64-bit) (April 11, 2016)",
 StyleDefinitions->"Default.nb"
 ]
 (* End of Notebook Content *)
@@ -2651,54 +2644,50 @@ Cell[1633, 51, 742, 17, 52, "Input"]
 }, Open  ]],
 Cell[CellGroupData[{
 Cell[2412, 73, 98, 1, 39, "Subsubsection"],
-Cell[CellGroupData[{
-Cell[2535, 78, 835, 17, 67, "Input"],
-Cell[3373, 97, 169, 2, 31, "Output"]
-}, Open  ]]
+Cell[2513, 76, 852, 17, 67, "Input"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[3591, 105, 111, 1, 39, "Subsubsection"],
-Cell[3705, 108, 355, 9, 31, "Input"]
+Cell[3402, 98, 111, 1, 39, "Subsubsection"],
+Cell[3516, 101, 355, 9, 31, "Input"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[4097, 122, 134, 2, 39, "Subsubsection"],
-Cell[4234, 126, 2971, 68, 272, "Input"]
+Cell[3908, 115, 134, 2, 39, "Subsubsection"],
+Cell[4045, 119, 2971, 68, 272, "Input"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[7242, 199, 103, 1, 39, "Subsubsection"],
-Cell[7348, 202, 5739, 111, 472, "Input"]
+Cell[7053, 192, 103, 1, 39, "Subsubsection"],
+Cell[7159, 195, 5739, 111, 452, "Input"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[13124, 318, 103, 1, 39, "Subsubsection"],
-Cell[13230, 321, 2047, 51, 92, "Input"]
+Cell[12935, 311, 103, 1, 39, "Subsubsection"],
+Cell[13041, 314, 2047, 51, 92, "Input"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[15314, 377, 149, 2, 39, "Subsubsection"],
-Cell[15466, 381, 3688, 75, 412, "Input"]
+Cell[15125, 370, 149, 2, 39, "Subsubsection"],
+Cell[15277, 374, 3688, 75, 412, "Input"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[19191, 461, 101, 1, 39, "Subsubsection"],
-Cell[19295, 464, 5939, 146, 372, "Input"]
+Cell[19002, 454, 101, 1, 39, "Subsubsection"],
+Cell[19106, 457, 5939, 146, 372, "Input"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[25271, 615, 101, 1, 39, "Subsubsection"],
-Cell[25375, 618, 27762, 562, 1831, "Input"]
+Cell[25082, 608, 101, 1, 39, "Subsubsection"],
+Cell[25186, 611, 27762, 562, 1831, "Input"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[53174, 1185, 108, 1, 39, "Subsubsection"],
-Cell[53285, 1188, 431, 11, 92, "Input"]
+Cell[52985, 1178, 108, 1, 39, "Subsubsection"],
+Cell[53096, 1181, 431, 11, 92, "Input"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[53753, 1204, 102, 1, 39, "Subsubsection"],
-Cell[53858, 1207, 41331, 664, 1372, "Input"]
+Cell[53564, 1197, 102, 1, 39, "Subsubsection"],
+Cell[53669, 1200, 41331, 664, 1372, "Input"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[95226, 1876, 102, 1, 39, "Subsubsection"],
-Cell[95331, 1879, 33036, 742, 1525, "Input"]
+Cell[95037, 1869, 102, 1, 39, "Subsubsection"],
+Cell[95142, 1872, 33036, 742, 1525, "Input"]
 }, Open  ]]
 }, Open  ]]
 }
 ]
 *)
 
-(* End of internal cache information *)
